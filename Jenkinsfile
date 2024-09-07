@@ -9,6 +9,7 @@ pipeline {
     stage("build") {
       steps {
         echo 'This is a test stage'
+        docker build -t my-react-app .
       }
     }
     stage("test") {
@@ -19,6 +20,7 @@ pipeline {
     stage("build docker image") {
       steps {
         echo 'This is a test stage'
+        docker run -p 3000:3000 my-react-app
       }
     }
     stage("deploy") {
