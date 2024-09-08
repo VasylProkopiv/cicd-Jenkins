@@ -6,7 +6,7 @@ pipeline {
         script {
           echo 'This is a test stage'
           sh "docker build -t my-react-app ."
-          sh "docker run -d -p 3000:3000 my-react-app"
+          sh "docker run -d -p 3000:3000 --name AppFromDev my-react-app"
         }
       }
     }
