@@ -6,8 +6,6 @@ pipeline {
         script {
           container_name = AppFromDev
           echo 'This is a test stage'
-          #sh "if [ "$( docker container inspect -f '{{.State.Running}}' AppFromDev 2>/dev/null )" = "true" ]; then docker stop $container_name; fi"
-          
           sh "docker stop AppFromDev
               docker rm AppFromDev
               docker rmi my-react-app
