@@ -5,8 +5,9 @@ pipeline {
       steps {
         script {
           container_name = "AppFromDev"
+          sh "if [ "$( docker container inspect -f '{{.State.Running}}' AppFromDev 2>/dev/null )" = "true" ]; then docker stop $container_name; fi"
           sh "docker build -t my-react-app ."
-          sh "docker run -d -p 3000:3000 --name AppFromDev my-react-app"
+          sh "docker run -d -p 3000:3000 --name $container_name my-react-app"
         }
       }
     }
