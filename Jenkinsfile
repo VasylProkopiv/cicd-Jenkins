@@ -4,7 +4,7 @@ pipeline {
     stage("build") {
       steps {
         script {
-          container_name = AppFromDev
+          container_name = "AppFromDev"
           sh "docker build -t my-react-app ."
           sh "docker run -d -p 3000:3000 --name AppFromDev my-react-app"
         }
