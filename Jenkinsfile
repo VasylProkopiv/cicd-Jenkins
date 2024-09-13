@@ -9,8 +9,8 @@ pipeline {
     stage("build") {
       steps {
         script {
-          sh "mv logo.svg old_logo.svg"
-          sh "mv dev.svg logo.svg"
+          sh "mv src/logo.svg src/old_logo.svg"
+          sh "mv src/dev.svg src/logo.svg"
         }
       }
     }
@@ -37,6 +37,8 @@ pipeline {
       steps {
         script {
           sh "docker run -d -p 3000:3000 --name $container_name my-react-app"
+          sh "mv src/logo.svg src/dev.svg"
+          sh "mv src/old_logo.svg src/logo.svg"
         }
       }
     }
