@@ -37,7 +37,7 @@ pipeline {
     stage("deploy") {
       steps {
         script {
-          sh "docker run -d -p 3000:3001 --name $container_name my-react-app"
+          sh "docker run -d -p 3001:3001 --name $container_name my-react-app"
           sh "mv src/logo.svg src/prod.svg"
           sh "mv src/old_logo.svg src/logo.svg"
         }
