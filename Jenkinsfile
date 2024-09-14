@@ -30,14 +30,14 @@ pipeline {
     stage("build docker image") {
       steps {
         script {
-          sh "docker build -t my-react-app ."
+          sh "docker build -t nodemain:v1.0 ."
         }
       }
     }
     stage("deploy") {
       steps {
         script {
-          sh "docker run -d -p 3001:3001 --name $container_name my-react-app"
+          sh "docker run -d -p 3001:3001 --name $container_name nodemain:v1.0"
           sh "mv src/logo.svg src/prod.svg"
           sh "mv src/old_logo.svg src/logo.svg"
         }
