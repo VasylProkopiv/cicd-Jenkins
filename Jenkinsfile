@@ -36,7 +36,7 @@ pipeline {
     stage("deploy") {
       steps {
         script {
-          sh "docker run -d -p 3000:3000 --name $container_name nodedev:v1.0"
+          sh "docker run -d -p 3001:3001 --name $container_name nodedev:v1.0"
           sh "mv src/logo.svg src/dev.svg"
           sh "mv src/old_logo.svg src/logo.svg"
         }
