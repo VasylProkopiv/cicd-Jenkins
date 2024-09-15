@@ -29,6 +29,11 @@ pipeline {
     stage("build docker image") {
       steps {
         script {
+          sh """
+              if [ "\$(docker images -f 2>/dev/null)" = "true" ]; then 
+              docker rmi nodedev:v1.0
+              fi
+          """
           sh "docker build -t nodedev:v1.0 ."
         }
       }
